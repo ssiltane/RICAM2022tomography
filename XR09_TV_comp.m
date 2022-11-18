@@ -31,10 +31,10 @@ disp('Data loaded')
 % TV reconstruction
 
 % Maximum number of iterations
-max_iter = 10000;
+max_iter = 8000;
 
 % Regularization parameter
-alpha = 0.001;   % 1e-4
+alpha = 0.002;   % 1e-4
 
 % Reconstruct using total generalized variation
 recn = tomo_tv(m, A, 2, alpha, max_iter, 1);

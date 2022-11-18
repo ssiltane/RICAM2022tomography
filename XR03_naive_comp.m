@@ -8,7 +8,7 @@
 % Jennifer Mueller and Samuli Siltanen, October 2022
 
 load data/RadonMatrix A measang N P Nang
-load data/sinograms m_IC noise_amplitude m mn strange_angle groundtruth groundtruth_rot sino_row sino_col
+load data/sinograms m_IC  m mn strange_angle groundtruth groundtruth_rot sino_row sino_col
 
 % Naive reconstruction from inverse-crime data. We use Matlab's operator
 % '\' that provides a least-squares solution of a matrix equation.
@@ -19,3 +19,6 @@ disp(['Relative error (ideal data): ',num2str(100*relerr),'%'])
 
 % Save results to file
 save data/naiverecon naive_recon relerr
+
+% Take a look
+XR03_naive_plot

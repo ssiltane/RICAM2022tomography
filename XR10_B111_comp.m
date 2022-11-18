@@ -26,7 +26,7 @@ mn = mn/normA;
 Niter = 1500;
 
 % Desired ratio of nonzero wavelet coefficients 
-a_priori_sparsity = .09;
+a_priori_sparsity = .04;
 
 % Initial threshold mu used in the transform. The value of mu will change
 % dynamically during the iteration

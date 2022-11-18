@@ -30,11 +30,21 @@ sinogram = radon(groundtruth_rot,measang+strange_angle);
 m = sinogram(:);
 
 % Add noise
-noise_amplitude = 0.01;
-mn = m + noise_amplitude*max(m(:))*randn(size(m));
+% noise_amplitude = 0.01;
+% mn = m + noise_amplitude*max(m(:))*randn(size(m));
+empty_space_photon_count = 7000; 
+sinoMAX = max(sinogram(:));
+measurement = empty_space_photon_count * exp(-sinogram/sinoMAX);
+approximate_Poisson_noise = sqrt((measurement)).*randn(size(measurement));
+mn = log(empty_space_photon_count)-log(measurement+approximate_Poisson_noise);
+mn = max(0,mn);
+mn = sinoMAX*mn;
+% figure(101)
+% imshow([sinogram,mn,abs(sinogram-mn)], []);
+% axis square
 
 % Save reaults to disc
-save data/sinograms m_IC noise_amplitude m mn strange_angle groundtruth groundtruth_rot sino_row sino_col
+save data/sinograms m_IC empty_space_photon_count m mn strange_angle groundtruth groundtruth_rot sino_row sino_col
 
 % Take a look
 XR02_data_plot
